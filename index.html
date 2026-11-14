@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' file: data: blob:; worker-src 'self' blob:; frame-src file:; object-src file:">
+  <title>CampusNotes</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- অ্যাপ খোলার সময়ের স্প্ল্যাশ স্ক্রিন -->
+  <div id="splash">
+    <div class="splash-logo">📚</div>
+    <h1>CampusNotes</h1>
+    <p>আমার ডিপার্টমেন্টের সব নোট এক জায়গায়</p>
+  </div>
+
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <h2 id="brandTitle">📚 CampusNotes</h2>
+        <button id="themeBtn" class="icon-btn" title="থিম বদলাও">🌙</button>
+      </div>
+
+      <button id="homeBtn" class="home-btn">🏠 হোম</button>
+      <button id="plannerBtn" class="home-btn">📅 রুটিন ও পরীক্ষা</button>
+      <input id="globalSearch" class="global-search" type="search" placeholder="🔍 সব কোর্সে খোঁজো...">
+
+      <div id="courseList"></div>
+
+      <form id="courseForm">
+        <select id="semesterSelect"></select>
+        <input id="courseName" type="text" placeholder="কোর্সের নাম (যেমন: CSE 101)" required>
+        <button type="submit" class="primary">+ কোর্স যোগ করো</button>
+      </form>
+
+      <div class="backup-row">
+        <button id="exportBtn" title="সব ডেটা zip ফাইলে সেভ করো">💾 ব্যাকআপ</button>
+        <button id="importBtn" title="আগের ব্যাকআপ zip থেকে ফিরিয়ে আনো">📥 রিস্টোর</button>
+      </div>
+    </aside>
+
+    <main>
+      <header class="topbar" id="topbar">
+        <div class="top-row">
+          <div>
+            <h1 id="title">CampusNotes</h1>
+            <p id="subtitle" class="muted"></p>
+          </div>
+          <div class="controls" id="controls">
+            <input id="search" type="search" placeholder="🔍 এই কোর্সে খোঁজো...">
+            <select id="typeSelect" title="নতুন ফাইলের ধরন"></select>
+            <select id="examSelect" class="hidden" title="পরীক্ষার ধরন"></select>
+            <input id="yearInput" class="hidden" type="number" min="2000" max="2100" placeholder="বছর">
+            <button id="addFileBtn" class="primary">+ ফাইল যোগ করো</button>
+            <button id="addNoteBtn">✍️ নোট লেখো</button>
+          </div>
+        </div>
+        <nav id="tabs" class="tabs"></nav>
+      </header>
+
+      <section id="fileList" class="files"></section>
+    </main>
+  </div>
+
+  <div id="printArea"></div>
+  <div id="toast" class="toast"></div>
+
+  <script src="node_modules/marked/lib/marked.umd.js"></script>
+  <script src="renderer.js"></script>
+</body>
+</html>
